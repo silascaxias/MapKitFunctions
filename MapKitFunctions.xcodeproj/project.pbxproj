@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DD5CC53F2360B8260090F465 /* MapViewController+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CC53E2360B8260090F465 /* MapViewController+Location.swift */; };
 		DD5CC5412360B84D0090F465 /* MapViewController+MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CC5402360B84D0090F465 /* MapViewController+MapView.swift */; };
+		DDBE4BDD23621BF60042F6C2 /* PointDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE4BDC23621BF60042F6C2 /* PointDetailsViewController.swift */; };
 		DDEA9FAE2360A5710076778C /* MapServicesUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9FAD2360A5710076778C /* MapServicesUtils.swift */; };
 		DDEA9FB52360A7260076778C /* MapMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9FB42360A7260076778C /* MapMark.swift */; };
 		DDEA9FB62360A84F0076778C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFB1FA9235F4222004EFF71 /* LaunchScreen.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		DD5CC53E2360B8260090F465 /* MapViewController+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Location.swift"; sourceTree = "<group>"; };
 		DD5CC5402360B84D0090F465 /* MapViewController+MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapView.swift"; sourceTree = "<group>"; };
+		DDBE4BDC23621BF60042F6C2 /* PointDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDetailsViewController.swift; sourceTree = "<group>"; };
 		DDEA9FAD2360A5710076778C /* MapServicesUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServicesUtils.swift; sourceTree = "<group>"; };
 		DDEA9FB42360A7260076778C /* MapMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMark.swift; sourceTree = "<group>"; };
 		DDEA9FB92360B34F0076778C /* ImageUitls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUitls.swift; sourceTree = "<group>"; };
@@ -59,9 +61,18 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
+		DDBE4BDB23621BDA0042F6C2 /* PointDetails */ = {
+			isa = PBXGroup;
+			children = (
+				DDBE4BDC23621BF60042F6C2 /* PointDetailsViewController.swift */,
+			);
+			path = PointDetails;
+			sourceTree = "<group>";
+		};
 		DDEA9FAF2360A57B0076778C /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DDBE4BDB23621BDA0042F6C2 /* PointDetails */,
 				DD5CC5422360BB7A0090F465 /* MapView */,
 			);
 			path = controllers;
@@ -214,6 +225,7 @@
 			files = (
 				DDFB1FA3235F4222004EFF71 /* MapViewController.swift in Sources */,
 				DDEA9FAE2360A5710076778C /* MapServicesUtils.swift in Sources */,
+				DDBE4BDD23621BF60042F6C2 /* PointDetailsViewController.swift in Sources */,
 				DDFB1F9F235F4222004EFF71 /* AppDelegate.swift in Sources */,
 				DDEA9FB52360A7260076778C /* MapMark.swift in Sources */,
 				DD5CC5412360B84D0090F465 /* MapViewController+MapView.swift in Sources */,

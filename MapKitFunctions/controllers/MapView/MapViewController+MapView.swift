@@ -44,7 +44,9 @@ extension MapViewController : MKMapViewDelegate {
             return
         }
 
-        showConfirmAlert(title: annotation.title  as? String ?? "", message: annotation.subtitle as? String ?? "", preferredStyle: .alert, confirmHandler: {})
+        showAlert(title: annotation.title  as? String ?? "", message: "Deseja ver informações de: \(annotation.subtitle as? String ?? annotation.title!!)", preferredStyle: .alert) {
+            self.performSegue(withIdentifier: "toDetailsPoint", sender: annotation.subtitle as? String ?? annotation.title!!)
+        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
