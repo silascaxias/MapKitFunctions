@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w4q-4U-9bP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w4q-4U-9bP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,28 +93,45 @@
                         <outlet property="buttonStart" destination="cCE-1H-kST" id="qig-CF-rfM"/>
                         <outlet property="distanceView" destination="LBG-tg-l8u" id="Ohu-8i-JrU"/>
                         <outlet property="mapView" destination="JWi-0P-Paa" id="4K0-gy-ArP"/>
-                        <segue destination="ViF-7q-RqU" kind="show" identifier="toPointDetail" id="zOV-qU-ahA"/>
+                        <segue destination="ViF-7q-RqU" kind="show" identifier="toDetailsPoint" id="zOV-qU-ahA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="138.61607142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Point Details View Controller-->
         <scene sceneID="vwp-Jp-PvD">
             <objects>
-                <viewController id="ViF-7q-RqU" sceneMemberID="viewController">
+                <viewController id="ViF-7q-RqU" customClass="PointDetailsViewController" customModule="MapKitFunctions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Dc-TU-JNN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QES-Pe-aIU">
+                                <rect key="frame" x="20" y="475" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QES-Pe-aIU" firstAttribute="leading" secondItem="bxp-CV-Wn7" secondAttribute="leading" constant="20" id="AWr-a1-Ypr"/>
+                            <constraint firstItem="QES-Pe-aIU" firstAttribute="centerX" secondItem="bxp-CV-Wn7" secondAttribute="centerX" id="I3O-Py-gFd"/>
+                            <constraint firstItem="QES-Pe-aIU" firstAttribute="centerY" secondItem="bxp-CV-Wn7" secondAttribute="centerY" id="sGQ-nZ-234"/>
+                            <constraint firstItem="bxp-CV-Wn7" firstAttribute="trailing" secondItem="QES-Pe-aIU" secondAttribute="trailing" constant="20" id="wLG-Pq-Q6H"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bxp-CV-Wn7"/>
                     </view>
                     <navigationItem key="navigationItem" id="fCb-Cm-lce"/>
+                    <connections>
+                        <outlet property="pointNameLabel" destination="QES-Pe-aIU" id="f2E-0H-WfM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5FZ-bV-lzT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1965" y="139"/>
+            <point key="canvasLocation" x="1963.7681159420292" y="138.61607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="06F-ln-BjB">

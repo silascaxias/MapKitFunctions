@@ -62,8 +62,6 @@ class MapViewController: UIViewController {
             MapMark(id: 2, title: "PONTO B", locationName: "SICRED RIO CLARO", image: ImageUtils.imageWithSize(image: UIImage(named: "bus-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.399617, longitude: -47.563602)),
             MapMark(id: 2, title: "PONTO C", locationName: "TORRE EIFFEL", image: ImageUtils.imageWithSize(image: UIImage(named: "finish-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.395408, longitude: -47.563064))
         ]
-    
-        
         
         mapView.addAnnotations(arrayLocations.map({ return $0.point} ))
         
@@ -108,6 +106,14 @@ class MapViewController: UIViewController {
     @IBAction func DecreaseViewDidTapped() {
         if (viewDistanceMap > 500.5) {
             viewDistanceMap -= 100.0
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsPoint",
+            let pointDetailsViewController = segue.destination as? PointDetailsViewController,
+                let nameDetails = sender as? String {
+            pointDetailsViewController.pointName = nameDetails
         }
     }
     
