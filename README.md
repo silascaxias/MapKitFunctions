@@ -7,3 +7,5 @@
 import MapKit
 import CoreLocation
 ```
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
