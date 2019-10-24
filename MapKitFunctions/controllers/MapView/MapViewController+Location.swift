@@ -24,16 +24,16 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let userLocation = locations.first else {
             return print("Failed to get user's location")
         }
-
-        userPositionMark = MapMark(id: 1, title: "Motorista Posição", locationName: "", image: ImageUtils.imageWithSize(image: UIImage(named: "icon-motorista")!, scaledToSize: motoristSize), coordinate: userLocation.coordinate)
         
+        userPositionMark = MapMark(id: 1, title: "Motorista Posição", locationName: "", image: ImageUtils.imageWithSize(image: UIImage(named: "icon-motorista")!, scaledToSize: motoristSize), coordinate: userLocation.coordinate)
+
         let coordinateRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: viewDistanceMap, longitudinalMeters: viewDistanceMap)
         mapView.setRegion(coordinateRegion, animated: true)
-        
-        if userLocation.coordinate.longitude == initalMark.coordinate.longitude && userLocation.coordinate.latitude == initalMark.coordinate.latitude {
+
+        if userLocation.coordinate.longitude == initialMark.coordinate.longitude && userLocation.coordinate.latitude == initialMark.coordinate.latitude {
             return
         }
-        
+    
         if let selectedCoordinate = selectedCoordinate {
             MapServices.getDistanceFromCoordinates(startCoordinate: userLocation.coordinate, destinationCoordinate: CLLocationCoordinate2D(latitude: selectedCoordinate.latitude, longitude: selectedCoordinate.longitude), onCompletion: { distance in
                 self.updateDistance(distance: distance)

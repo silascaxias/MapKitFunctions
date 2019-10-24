@@ -19,12 +19,12 @@ class MapViewController: UIViewController {
 
     var arrayLocations : [MapMark] = []
 
-    var initalMark: MapMark!
+    var initialMark: MapMark!
 
     var userPositionMark: MapMark? = nil
 
     var selectedCoordinate: CLLocationCoordinate2D? = nil
-
+    
     var initialLocation: CLLocation = CLLocation(latitude: -22.402927, longitude: -47.565726)
 
     var motoristSize: CGSize = CGSize(width: 35.0, height: 40.0)
@@ -53,14 +53,15 @@ class MapViewController: UIViewController {
         mapView.userTrackingMode = .follow
         
     
-        initalMark = MapMark(id: 1, title: "Motorista Posição", locationName: "", image: ImageUtils.imageWithSize(image: UIImage(named: "icon-motorista")!, scaledToSize: motoristSize), coordinate: initialLocation.coordinate)
+        initialMark = MapMark(id: 1, title: "Motorista Posição", locationName: "", image: ImageUtils.imageWithSize(image: UIImage(named: "icon-motorista")!, scaledToSize: motoristSize), coordinate: locationManager.location?.coordinate ?? initialLocation.coordinate)
 
         userPositionMark = MapMark(id: 1, title: "Motorista Posição", locationName: "", image: ImageUtils.imageWithSize(image: UIImage(named: "icon-motorista")!, scaledToSize: motoristSize), coordinate: initialLocation.coordinate)
     
         arrayLocations = [
-            MapMark(id: 1, title: "PONTO A", locationName: "MINAS TINTAS", image: ImageUtils.imageWithSize(image: UIImage(named: "bus-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.401431, longitude: -47.564881)),
-            MapMark(id: 2, title: "PONTO B", locationName: "SICRED RIO CLARO", image: ImageUtils.imageWithSize(image: UIImage(named: "bus-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.399617, longitude: -47.563602)),
-            MapMark(id: 2, title: "PONTO C", locationName: "TORRE EIFFEL", image: ImageUtils.imageWithSize(image: UIImage(named: "finish-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.395408, longitude: -47.563064))
+            MapMark(id: 1, title: "PONTO INICIAL", locationName: "PONTO INICIAL", image: ImageUtils.imageWithSize(image: UIImage(named: "bus-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.402911, longitude: -47.565512)),
+            MapMark(id: 2, title: "PONTO A", locationName: "MINAS TINTAS", image: ImageUtils.imageWithSize(image: UIImage(named: "bus-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.401431, longitude: -47.564881)),
+            MapMark(id: 3, title: "PONTO B", locationName: "SICRED RIO CLARO", image: ImageUtils.imageWithSize(image: UIImage(named: "bus-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.399617, longitude: -47.563602)),
+            MapMark(id: 4, title: "PONTO C", locationName: "TORRE EIFFEL", image: ImageUtils.imageWithSize(image: UIImage(named: "finish-icon")!, scaledToSize: iconSize), coordinate: CLLocationCoordinate2D(latitude: -22.395408, longitude: -47.563064))
         ]
         
         mapView.addAnnotations(arrayLocations.map({ return $0.point} ))
@@ -69,7 +70,7 @@ class MapViewController: UIViewController {
     }
     
     func setupInitialPosition() {
-        let center = CLLocationCoordinate2D(latitude: initalMark.coordinate.latitude, longitude: initalMark.coordinate.longitude)
+        let center = CLLocationCoordinate2D(latitude: initialMark.coordinate.latitude, longitude: initialMark.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
     }
@@ -87,13 +88,13 @@ class MapViewController: UIViewController {
     @IBAction func startRouteDidTapped() {
         for (index, location) in arrayLocations.enumerated() {
             if arrayLocations.first!.id == location.id {
-                MapServices.createRoutes(pickupCoordinate: initalMark.coordinate, destinationCoordinate: location.coordinate, mapView: mapView)
+                MapServices.createRoutes(pickupCoordinate: initialMark.coordinate, destinationCoordinate: location.coordinate, mapView: mapView)
             } else {
                 MapServices.createRoutes(pickupCoordinate: arrayLocations[index - 1].coordinate, destinationCoordinate: location.coordinate, mapView: mapView)
             }
         }
         
-        updateDistance(distance: CLLocation(latitude: initalMark.coordinate.latitude, longitude: initalMark.coordinate.longitude).distance(from: CLLocation(latitude: arrayLocations.last!.coordinate.latitude, longitude: arrayLocations.last!.coordinate.longitude)))
+        updateDistance(distance: CLLocation(latitude: initialMark.coordinate.latitude, longitude: initialMark.coordinate.longitude).distance(from: CLLocation(latitude: arrayLocations.last!.coordinate.latitude, longitude: arrayLocations.last!.coordinate.longitude)))
         buttonStart.isHidden = true
     }
     
