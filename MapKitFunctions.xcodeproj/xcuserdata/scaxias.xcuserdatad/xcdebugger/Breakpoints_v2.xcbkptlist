@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE886E64-552F-4595-908F-BB3652B04B3E"
+            uuid = "76835FF4-0C6B-4716-A84B-9D204DF6D589"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MapKitFunctions/controllers/PointDetails/PointDetailsViewController.swift"
+            filePath = "MapKitFunctions/controllers/MapView/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "switchChanged(mySwitch:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

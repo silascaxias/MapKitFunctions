@@ -28,6 +28,10 @@ extension MapViewController : MKMapViewDelegate {
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView!.canShowCallout = true
+            let calloutButton = UIButton(type: .detailDisclosure)
+            calloutButton.tintColor = #colorLiteral(red: 0.8926053643, green: 0.5932921171, blue: 0.3987112045, alpha: 1)
+            annotationView!.rightCalloutAccessoryView = calloutButton
+            annotationView!.sizeToFit()
         } else {
             annotationView!.annotation = annotation
         }
@@ -38,14 +42,14 @@ extension MapViewController : MKMapViewDelegate {
         return annotationView
     }
 
-     // MARK: Action on select an annotation
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+     // MARK: Button info did tapped
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let annotation = view.annotation else {
             return
         }
-
-        showAlert(title: annotation.title  as? String ?? "", message: "Deseja ver informações de: \(annotation.subtitle as? String ?? annotation.title!!)", preferredStyle: .alert) {
-            self.performSegue(withIdentifier: "toDetailsPoint", sender: annotation.subtitle as? String ?? annotation.title!!)
+        
+        if control == view.rightCalloutAccessoryView {
+             self.performSegue(withIdentifier: "toDetailsPoint", sender: annotation)
         }
     }
     
@@ -55,4 +59,5 @@ extension MapViewController : MKMapViewDelegate {
         renderer.lineWidth = 5.0
         return renderer
     }
+
 }

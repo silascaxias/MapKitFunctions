@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DD5CC53F2360B8260090F465 /* MapViewController+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CC53E2360B8260090F465 /* MapViewController+Location.swift */; };
 		DD5CC5412360B84D0090F465 /* MapViewController+MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CC5402360B84D0090F465 /* MapViewController+MapView.swift */; };
+		DD7FCAD42363176D00EF02DB /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FCAD32363176D00EF02DB /* UIImageView.swift */; };
+		DD7FCAD72363299200EF02DB /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FCAD62363299200EF02DB /* UINavigationController.swift */; };
 		DDBE4BDD23621BF60042F6C2 /* PointDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE4BDC23621BF60042F6C2 /* PointDetailsViewController.swift */; };
 		DDEA9FAE2360A5710076778C /* MapServicesUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9FAD2360A5710076778C /* MapServicesUtils.swift */; };
 		DDEA9FB52360A7260076778C /* MapMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEA9FB42360A7260076778C /* MapMark.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		DD5CC53E2360B8260090F465 /* MapViewController+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+Location.swift"; sourceTree = "<group>"; };
 		DD5CC5402360B84D0090F465 /* MapViewController+MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapView.swift"; sourceTree = "<group>"; };
+		DD7FCAD32363176D00EF02DB /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		DD7FCAD62363299200EF02DB /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		DDBE4BDC23621BF60042F6C2 /* PointDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDetailsViewController.swift; sourceTree = "<group>"; };
 		DDEA9FAD2360A5710076778C /* MapServicesUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServicesUtils.swift; sourceTree = "<group>"; };
 		DDEA9FB42360A7260076778C /* MapMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMark.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				DDEA9FBB2360B5070076778C /* UIViewcontroller+Alert.swift */,
+				DD7FCAD32363176D00EF02DB /* UIImageView.swift */,
+				DD7FCAD62363299200EF02DB /* UINavigationController.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -229,8 +235,10 @@
 				DDFB1F9F235F4222004EFF71 /* AppDelegate.swift in Sources */,
 				DDEA9FB52360A7260076778C /* MapMark.swift in Sources */,
 				DD5CC5412360B84D0090F465 /* MapViewController+MapView.swift in Sources */,
+				DD7FCAD42363176D00EF02DB /* UIImageView.swift in Sources */,
 				DDEA9FBC2360B5070076778C /* UIViewcontroller+Alert.swift in Sources */,
 				DD5CC53F2360B8260090F465 /* MapViewController+Location.swift in Sources */,
+				DD7FCAD72363299200EF02DB /* UINavigationController.swift in Sources */,
 				DDFB1FA1235F4222004EFF71 /* SceneDelegate.swift in Sources */,
 				DDEA9FBA2360B34F0076778C /* ImageUitls.swift in Sources */,
 			);

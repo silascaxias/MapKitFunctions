@@ -21,8 +21,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="k0j-Iq-DTx"/>
                                 </connections>
                             </mapView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="51F65F1W6EF651E65F" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBG-tg-l8u">
-                                <rect key="frame" x="50" y="70" width="314" height="21.5"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBG-tg-l8u">
+                                <rect key="frame" x="50" y="70" width="314" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="0.63107944542253525" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.89260536432266235" green="0.59329211711883545" blue="0.39871120452880859" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,12 +67,30 @@
                                     <action selector="DecreaseViewDidTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="IsP-th-Wvq"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ice-5P-H8I">
+                                <rect key="frame" x="355" y="10" width="51" height="31"/>
+                                <color key="onTintColor" red="0.89260536430000004" green="0.59329211709999996" blue="0.39871120450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modo seguir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ud-TL-UpP">
+                                <rect key="frame" x="249" y="15" width="96" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="0.63107944540000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6q1-0L-asX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.89260536430000004" green="0.59329211709999996" blue="0.39871120450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="DOM-14-GcK" firstAttribute="top" secondItem="0j3-GZ-X9P" secondAttribute="bottom" constant="10" id="0qp-Mm-GW2"/>
+                            <constraint firstItem="Ice-5P-H8I" firstAttribute="leading" secondItem="5ud-TL-UpP" secondAttribute="trailing" constant="10" id="1z2-Ds-c2j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ice-5P-H8I" secondAttribute="trailing" constant="10" id="2hL-dZ-omw"/>
+                            <constraint firstItem="Ice-5P-H8I" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="6Fv-fK-qfU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cCE-1H-kST" secondAttribute="trailing" constant="20" id="Bdl-j2-wLS"/>
                             <constraint firstItem="cCE-1H-kST" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="FOf-70-uYc"/>
+                            <constraint firstItem="5ud-TL-UpP" firstAttribute="centerY" secondItem="Ice-5P-H8I" secondAttribute="centerY" id="GKL-KI-j9t"/>
                             <constraint firstItem="JWi-0P-Paa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="H1A-AR-xnA"/>
                             <constraint firstItem="LBG-tg-l8u" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="LOL-Is-QOf"/>
                             <constraint firstItem="LBG-tg-l8u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="OyN-ik-aZn"/>
@@ -93,6 +111,7 @@
                         <outlet property="buttonStart" destination="cCE-1H-kST" id="qig-CF-rfM"/>
                         <outlet property="distanceView" destination="LBG-tg-l8u" id="Ohu-8i-JrU"/>
                         <outlet property="mapView" destination="JWi-0P-Paa" id="4K0-gy-ArP"/>
+                        <outlet property="switchFollowMode" destination="Ice-5P-H8I" id="DGS-e5-PJO"/>
                         <segue destination="ViF-7q-RqU" kind="show" identifier="toDetailsPoint" id="zOV-qU-ahA"/>
                     </connections>
                 </viewController>
@@ -103,29 +122,56 @@
         <!--Point Details View Controller-->
         <scene sceneID="vwp-Jp-PvD">
             <objects>
-                <viewController id="ViF-7q-RqU" customClass="PointDetailsViewController" customModule="MapKitFunctions" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="pageSheet" id="ViF-7q-RqU" customClass="PointDetailsViewController" customModule="MapKitFunctions" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Dc-TU-JNN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QES-Pe-aIU">
-                                <rect key="frame" x="20" y="475" width="374" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QES-Pe-aIU">
+                                <rect key="frame" x="0.0" y="74" width="414" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yan-PE-Jqc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.89260536430000004" green="0.59329211709999996" blue="0.39871120450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEV-xt-86e">
+                                <rect key="frame" x="0.0" y="407" width="414" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="0.63107944540000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vW1-Au-M6q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.89260536430000004" green="0.59329211709999996" blue="0.39871120450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xy-VQ-IB1">
+                                <rect key="frame" x="30" y="134" width="354" height="253"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="253" id="f9J-Yw-yGT"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.97687059640884399" green="0.96135109663009644" blue="0.92778295278549194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QES-Pe-aIU" firstAttribute="leading" secondItem="bxp-CV-Wn7" secondAttribute="leading" constant="20" id="AWr-a1-Ypr"/>
-                            <constraint firstItem="QES-Pe-aIU" firstAttribute="centerX" secondItem="bxp-CV-Wn7" secondAttribute="centerX" id="I3O-Py-gFd"/>
-                            <constraint firstItem="QES-Pe-aIU" firstAttribute="centerY" secondItem="bxp-CV-Wn7" secondAttribute="centerY" id="sGQ-nZ-234"/>
-                            <constraint firstItem="bxp-CV-Wn7" firstAttribute="trailing" secondItem="QES-Pe-aIU" secondAttribute="trailing" constant="20" id="wLG-Pq-Q6H"/>
+                            <constraint firstItem="QES-Pe-aIU" firstAttribute="leading" secondItem="bxp-CV-Wn7" secondAttribute="leading" id="5h6-57-d8o"/>
+                            <constraint firstItem="bxp-CV-Wn7" firstAttribute="trailing" secondItem="dEV-xt-86e" secondAttribute="trailing" id="FLe-B4-c8a"/>
+                            <constraint firstItem="dEV-xt-86e" firstAttribute="leading" secondItem="bxp-CV-Wn7" secondAttribute="leading" id="Kxk-9y-1pX"/>
+                            <constraint firstItem="7xy-VQ-IB1" firstAttribute="leading" secondItem="bxp-CV-Wn7" secondAttribute="leading" constant="30" id="Nce-Hu-iM5"/>
+                            <constraint firstItem="bxp-CV-Wn7" firstAttribute="trailing" secondItem="QES-Pe-aIU" secondAttribute="trailing" id="WFP-fl-hXt"/>
+                            <constraint firstItem="bxp-CV-Wn7" firstAttribute="trailing" secondItem="7xy-VQ-IB1" secondAttribute="trailing" constant="30" id="Y3R-AX-XMe"/>
+                            <constraint firstItem="7xy-VQ-IB1" firstAttribute="top" secondItem="QES-Pe-aIU" secondAttribute="bottom" constant="20" id="nlv-nJ-sfL"/>
+                            <constraint firstItem="dEV-xt-86e" firstAttribute="top" secondItem="7xy-VQ-IB1" secondAttribute="bottom" constant="20" id="wGk-wQ-909"/>
+                            <constraint firstItem="QES-Pe-aIU" firstAttribute="top" secondItem="bxp-CV-Wn7" secondAttribute="top" constant="30" id="ylV-VX-Wyf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bxp-CV-Wn7"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fCb-Cm-lce"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="coordinateLabel" destination="dEV-xt-86e" id="Sif-ff-2Fk"/>
+                        <outlet property="mapView" destination="7xy-VQ-IB1" id="1jX-B5-27p"/>
                         <outlet property="pointNameLabel" destination="QES-Pe-aIU" id="f2E-0H-WfM"/>
                     </connections>
                 </viewController>
@@ -133,10 +179,10 @@
             </objects>
             <point key="canvasLocation" x="1963.7681159420292" y="138.61607142857142"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="06F-ln-BjB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w4q-4U-9bP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w4q-4U-9bP" customClass="BaseNavigationController" customModule="MapKitFunctions" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mLo-6T-SCp">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
