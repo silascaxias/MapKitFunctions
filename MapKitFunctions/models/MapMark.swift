@@ -15,10 +15,10 @@ class MapMark {
     let title: String?
     let locationName: String
     let coordinate: CLLocationCoordinate2D
-    let image: UIImage
+    let image: UIImage?
     var point: CustomPoint
 
-    init(id: Int, title: String, locationName: String, image: UIImage, coordinate: CLLocationCoordinate2D) {
+    init(id: Int, title: String, locationName: String, image: UIImage? = nil, coordinate: CLLocationCoordinate2D) {
         self.id = id
         self.title = title
         self.locationName = locationName
@@ -28,8 +28,11 @@ class MapMark {
         self.point = CustomPoint()
         self.point.coordinate = coordinate
         self.point.title = title
-        self.point.image = image
         self.point.subtitle = locationName
+        
+        if let image = image {
+            self.point.image = image
+        }
     }
 }
 

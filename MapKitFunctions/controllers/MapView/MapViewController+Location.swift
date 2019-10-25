@@ -12,33 +12,36 @@ import CoreLocation
 
 extension MapViewController: CLLocationManagerDelegate {
     // MARK: Starting location tracker
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self.locationManager.startUpdatingLocation()
     }
-    
-     // MARK: Action on updating locations
 
+     // MARK: Action on updating locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+
         guard let userLocation = locations.first else {
             return print("Failed to get user's location")
         }
-        
+
         userPositionMark = MapMark(id: 1, title: "Motorista Posição", locationName: "", image: ImageUtils.imageWithSize(image: UIImage(named: "icon-motorista")!, scaledToSize: motoristSize), coordinate: userLocation.coordinate)
 
-        let coordinateRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: viewDistanceMap, longitudinalMeters: viewDistanceMap)
-        mapView.setRegion(coordinateRegion, animated: true)
+        let coordinateRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 500.0, longitudinalMeters: 500.0)
+        
+        if followModeState {
+            mapView.setRegion(coordinateRegion, animated: true)
+        } else {
+            mapView.setRegion(mapView.region, animated: true)
+        }
+        
 
         if userLocation.coordinate.longitude == initialMark.coordinate.longitude && userLocation.coordinate.latitude == initialMark.coordinate.latitude {
             return
         }
-    
+
         if let selectedCoordinate = selectedCoordinate {
             MapServices.getDistanceFromCoordinates(startCoordinate: userLocation.coordinate, destinationCoordinate: CLLocationCoordinate2D(latitude: selectedCoordinate.latitude, longitude: selectedCoordinate.longitude), onCompletion: { distance in
                 self.updateDistance(distance: distance)
             })
-            
         }
     }
 }
